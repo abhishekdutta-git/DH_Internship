@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Star, Quote, TrendingUp, CheckCircle2, ChevronLeft, ChevronRight, Building2, Globe2, Award, Users } from "lucide-react";
+import { Star, Quote, TrendingUp, ChevronLeft, ChevronRight, Building2, Globe2, Award, Users } from "lucide-react";
 
 const IMPACT_METRICS = [
   {
@@ -93,22 +93,22 @@ export default function ResultsTestimonials() {
   };
 
   return (
-    <section id="results" className="py-24 md:py-32 bg-[#090d16] relative overflow-hidden">
+    <section id="results" aria-labelledby="results-heading" className="py-24 md:py-32 bg-[#090d16] relative overflow-hidden">
       {/* Glow Effects */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-400">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/15 border border-blue-400/30 mb-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-300">
               PROVEN IMPACT & CLIENT RESULTS
             </span>
           </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">
+          <h2 id="results-heading" className="font-display text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">
             Real Metrics Driven for Industry Leaders
           </h2>
-          <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+          <p className="text-base sm:text-lg text-slate-200 leading-relaxed">
             Here is what happens when senior craftsmanship meets rigorous performance engineering and luxury aesthetic design.
           </p>
         </div>
@@ -120,19 +120,19 @@ export default function ResultsTestimonials() {
             return (
               <div
                 key={idx}
-                className="glass-panel p-6 rounded-3xl border border-white/10 hover:border-blue-500/30 transition-all flex flex-col justify-between"
+                className="glass-panel p-6 rounded-3xl border border-white/15 hover:border-blue-400/40 transition-all flex flex-col justify-between"
               >
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-blue-400" />
+                <div className="w-12 h-12 rounded-xl bg-blue-500/15 border border-blue-400/30 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-blue-400" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="font-display text-4xl font-extrabold text-white block mb-1">
                     {metric.value}
                   </span>
-                  <h3 className="text-base font-semibold text-slate-200 mb-1">
+                  <h3 className="text-base font-bold text-slate-100 mb-1">
                     {metric.label}
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">
+                  <p className="text-xs text-slate-300 leading-relaxed font-medium">
                     {metric.description}
                   </p>
                 </div>
@@ -145,26 +145,27 @@ export default function ResultsTestimonials() {
         <div className="max-w-4xl mx-auto">
           <div className="glass-panel gradient-border-glow p-8 sm:p-12 rounded-3xl relative overflow-hidden shadow-2xl">
             {/* Background Quote Icon */}
-            <Quote className="absolute -bottom-6 -right-6 w-48 h-48 text-white/[0.02] pointer-events-none" />
+            <Quote className="absolute -bottom-6 -right-6 w-48 h-48 text-white/[0.03] pointer-events-none" aria-hidden="true" />
 
             <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
               {/* Main Content */}
               <div className="flex-1">
                 {/* Metric Badge Pill */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-6 font-medium text-sm">
-                  <TrendingUp className="w-4 h-4" />
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 mb-6 font-bold text-sm">
+                  <TrendingUp className="w-4 h-4" aria-hidden="true" />
                   <span>{TESTIMONIALS[activeIdx].highlightMetric}</span>
-                  <span className="text-xs text-emerald-500/80">
+                  <span className="text-xs text-emerald-200">
                     ({TESTIMONIALS[activeIdx].metricSub})
                   </span>
                 </div>
 
                 {/* Stars */}
-                <div className="flex items-center gap-1 mb-6" aria-label="5 out of 5 stars rating">
+                <div className="flex items-center gap-1 mb-6" role="img" aria-label="5 out of 5 stars customer rating">
                   {[...Array(TESTIMONIALS[activeIdx].stars)].map((_, i) => (
                     <Star
                       key={i}
                       className="w-5 h-5 fill-amber-400 text-amber-400"
+                      aria-hidden="true"
                     />
                   ))}
                 </div>
@@ -183,9 +184,9 @@ export default function ResultsTestimonials() {
                     <span className="font-display font-bold text-white text-base block">
                       {TESTIMONIALS[activeIdx].name}
                     </span>
-                    <span className="text-xs text-slate-400 font-medium">
+                    <span className="text-xs text-slate-200 font-semibold">
                       {TESTIMONIALS[activeIdx].role},{" "}
-                      <span className="text-blue-400">
+                      <span className="text-blue-300">
                         {TESTIMONIALS[activeIdx].company}
                       </span>
                     </span>
@@ -195,36 +196,41 @@ export default function ResultsTestimonials() {
             </div>
 
             {/* Carousel Navigation Buttons */}
-            <div className="flex items-center justify-between mt-10 pt-6 border-t border-white/10">
+            <div className="flex items-center justify-between mt-10 pt-6 border-t border-white/15">
               <div className="flex items-center gap-2">
                 {TESTIMONIALS.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveIdx(idx)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      activeIdx === idx
-                        ? "w-8 bg-blue-500"
-                        : "bg-white/20 hover:bg-white/40"
-                    }`}
-                    aria-label={`Go to testimonial ${idx + 1}`}
-                  />
+                    className="min-h-[44px] min-w-[44px] p-2 flex items-center justify-center transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-full"
+                    aria-label={`Go to testimonial slide ${idx + 1} of ${TESTIMONIALS.length}`}
+                    aria-current={activeIdx === idx ? "true" : "false"}
+                  >
+                    <span
+                      className={`h-3 rounded-full transition-all block ${
+                        activeIdx === idx
+                          ? "w-8 bg-blue-400"
+                          : "w-3 bg-white/30 hover:bg-white/50"
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
 
               <div className="flex items-center gap-3">
                 <button
                   onClick={handlePrev}
-                  className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                  aria-label="Previous testimonial"
+                  className="min-h-[44px] min-w-[44px] p-3 rounded-full bg-[#1e293b] border border-white/20 text-slate-100 hover:text-white hover:bg-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center justify-center"
+                  aria-label="View previous client testimonial"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-5 h-5" aria-hidden="true" />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="p-3 rounded-full bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
-                  aria-label="Next testimonial"
+                  className="min-h-[44px] min-w-[44px] p-3 rounded-full bg-[#1e293b] border border-white/20 text-slate-100 hover:text-white hover:bg-slate-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 flex items-center justify-center"
+                  aria-label="View next client testimonial"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5" aria-hidden="true" />
                 </button>
               </div>
             </div>
